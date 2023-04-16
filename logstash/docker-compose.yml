@@ -8,10 +8,10 @@ services:
       args:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
     volumes:
-      - /storage01/docker_data/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
-      - /storage01/docker_data/logstash/config/:/etc/logstash
-      - /storage01/docker_data/logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
-      - /storage01/docker_data/logstash/data:/var/log/data/:rw
+      - /data/jenkins-agent/workspace/elasticsearch/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
+      - /data/jenkins-agent/workspace/elasticsearch/logstash/config/:/etc/logstash
+      - /data/jenkins-agent/workspace/elasticsearch/logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+      - /data/jenkins-agent/workspace/elasticsearch/logstash/data:/var/log/data/:rw
     ports:
       - 5044:5044
       - 50000:50000/tcp
