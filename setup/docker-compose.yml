@@ -9,10 +9,10 @@ services:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
     init: true
     volumes:
-      - ./setup/entrypoint.sh:/entrypoint.sh:ro,Z
-      - ./setup/lib.sh:/lib.sh:ro,Z
-      - ./setup/roles:/roles:ro,Z
-      - ./setup:/state:Z
+      - /data/jenkins-agent/workspace/elasticsearch/setup/entrypoint.sh:/entrypoint.sh:ro,Z
+      - /data/jenkins-agent/workspace/elasticsearch/setup/lib.sh:/lib.sh:ro,Z
+      - /data/jenkins-agent/workspace/elasticsearch/setup/roles:/roles:ro,Z
+      - /data/jenkins-agent/workspace/elasticsearch/setup:/state:Z
     environment:
       ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
