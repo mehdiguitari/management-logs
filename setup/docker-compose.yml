@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+
+  setup:
+    build:
+      context:  elasticsearch/setup/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    init: true
+    volumes:
+      - /storage01/docker_data/elasticsearch/setup/entrypoint.sh:/entrypoint.sh:ro,Z
+      - /storage01/docker_data/elasticsearch/setup/lib.sh:/lib.sh:ro,Z
+      - /storage01/docker_data/elasticsearch/setup/roles:/roles:ro,Z
+      - /storage01/docker_data/elasticsearch/setup:/state:Z
+    environment:
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
+      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+      KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
+      METRICBEAT_INTERNAL_PASSWORD: ${METRICBEAT_INTERNAL_PASSWORD:-}
+      FILEBEAT_INTERNAL_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD:-}
+      HEARTBEAT_INTERNAL_PASSWORD: ${HEARTBEAT_INTERNAL_PASSWORD:-}
+      MONITORING_INTERNAL_PASSWORD: ${MONITORING_INTERNAL_PASSWORD:-}
+      BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD:-}
+    networks:
+      - elk
