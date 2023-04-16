@@ -1,0 +1,11 @@
+$ModLoad imfile
+$InputFileName /var/log/mail.log
+$InputFileTag mail:
+$InputFileStateFile state-mail
+$InputFileSeverity info
+$InputFileFacility mail
+$InputRunFileMonitor
+
+# Send mail logs to a separate log file
+#mail.* /var/log/mail.log-rsyslog
+mail.*    @192.168.20.59:514

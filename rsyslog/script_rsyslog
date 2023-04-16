@@ -1,0 +1,3 @@
+#ouvrir le fichier script_rsyslog pour les droites access
+#!/bin/bash
+docker exec rsyslog_server chown syslog:adm /var/log/log_server/

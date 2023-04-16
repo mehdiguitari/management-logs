@@ -1,0 +1,12 @@
+version: '3'
+services:
+  rsyslog:
+    build: .
+    container_name: rsyslog_server
+    privileged: true
+    ports:
+      - "5000:514/tcp"
+      - "5000:514/udp"
+    restart: always
+    volumes:
+      - /var/log/log_server/:/var/log/log_server/
