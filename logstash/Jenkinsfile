@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "localhost:5000"
+        registry = "localhost:5005"
         }
     agent {
         node {
