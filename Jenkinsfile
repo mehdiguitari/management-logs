@@ -17,8 +17,8 @@ pipeline {
                 dir("${deployjobname}")
                 {
                     git branch: 'master',
-                       url: '${sourceCodeUrl}',
-                       credentialsId: 'github-auth'
+                       url: '${sourceCodeUrl}'
+                       // credentialsId: 'github-auth'
                 }
             }
         }
