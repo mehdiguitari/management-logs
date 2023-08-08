@@ -1,22 +1,24 @@
 pipeline {
     environment {
         registry = "localhost:5000"
+        deployjobname = "log_management"
+        sourceCodeUrl = "https://github.com/mehdiguitari/management-logs.git"
         }
     agent {
         node {
-            label 'pfe-machine'
+            label 'maître'
         }
     }  
     stages {
         stage('Cloning Git') {
             agent {
-                label 'pfe-machine'
+                label 'maître'
             }
            steps {
                 sh "mkdir -p ${deployjobname}"
                 dir("${deployjobname}")
                 {
-                    git branch: 'master',
+                    git branch: 'main',
                        url: '${sourceCodeUrl}'
                        // credentialsId: 'github-auth'
                 }
@@ -24,12 +26,12 @@ pipeline {
         }
         stage('Building image') {
             agent {
-                label 'pfe-machine'
+                label 'maître'
             }
         }   
         stage('Deploy image') {
             agent {
-                label 'pfe-machine'
+                label 'maître'
             }
            steps {
                 dir("${deployjobname}")
@@ -42,7 +44,7 @@ pipeline {
         }
         stage('Testing') {
             agent {
-                label 'pfe-machine'
+                label 'maître'
             }
            steps {
                 dir("${deployjobname}")
