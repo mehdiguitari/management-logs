@@ -37,7 +37,7 @@ pipeline {
                 dir("${deployjobname}")
                 {
                 script {
-                        sh "docker-compose up --force-recreate -d"
+                        sh "kubectl apply -f deployement.yaml"
                 }
                 }
             }
@@ -50,7 +50,7 @@ pipeline {
                 dir("${deployjobname}")
                 {
                 script {
-                        sh "docker ps | grep $deployjobname"
+                        sh "kubectl get pods -A"
                 }
                 }
             }
