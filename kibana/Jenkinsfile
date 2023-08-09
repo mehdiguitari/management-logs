@@ -35,6 +35,7 @@ pipeline {
                 dir("${deployjobname}")
                 {
                 script {
+                        sh "docker-compose up down"
                         sh "docker-compose up --force-recreate -d"
                 }
                 }
